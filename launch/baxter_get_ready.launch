@@ -1,0 +1,10 @@
+<launch>
+    <!--  disable head sonar  -->
+    <node pkg="rostopic" type="rostopic" name="rostopic" args="pub /robot/sonar/head_sonar/set_sonars_enabled std_msgs/UInt16 0"/>
+
+    <node pkg="baxter_interface" name="joint_trajectory_action_server" type="joint_trajectory_action_server.py" required="true" />
+    <include file="$(find takeit)/launch/baxter_moveit_config.launch" />
+
+    <node pkg="takeit" name="face_node" type="face_node" args="$(find takeit)/face/" required="true" />
+    <node pkg="takeit" name="head_hand_coordination_node" type="head_hand_coordination_node" required="true" />
+</launch>

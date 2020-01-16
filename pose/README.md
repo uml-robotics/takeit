@@ -1,0 +1,1 @@
+rosbag record --limit=1 /robot/limb/right/endpoint_state --output-name=
